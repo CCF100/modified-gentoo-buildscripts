@@ -22,10 +22,10 @@ HOMEPAGE="
 	https://github.com/python/cpython/
 "
 SRC_URI="
-	https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz
+	https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tar.xz
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
 	verify-sig? (
-		https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz.asc
+		https://www.python.org/ftp/python/3.13.5/Python-3.13.5.tar.xz.asc
 	)
 "
 S="${WORKDIR}/${MY_P}"
