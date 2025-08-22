@@ -9,7 +9,7 @@ WANT_LIBTOOL="none"
 
 inherit autotools check-reqs flag-o-matic linux-info llvm-r1
 inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
-#inherit verify-sig
+inherit verify-sig
 
 MY_PV=${PV}
 MY_P="Python-${MY_PV%_p*}"
