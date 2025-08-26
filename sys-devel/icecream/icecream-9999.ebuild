@@ -8,7 +8,7 @@ inherit autotools dot-a systemd tmpfiles git-r3
 
 DESCRIPTION="Distributed compiler with a central scheduler to share build load"
 HOMEPAGE="https://github.com/icecc/icecream"
-EGIT_SRC_URI=https://github.com/icecc/icecream.git
+EGIT_REPO_URI="https://github.com/icecc/icecream.git"
 
 LICENSE="GPL-2"
 SLOT="0"
