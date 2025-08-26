@@ -23,7 +23,8 @@ DEPEND="app-arch/libarchive:=
 RDEPEND="${DEPEND}
 	dev-util/shadowman"
 BDEPEND="app-text/docbook2X
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	app-text/asciidoc"
 
 src_prepare() {
 	default
