@@ -4,7 +4,7 @@
 EAPI=8
 
 AT_NOELIBTOOLIZE="yes"
-inherit autotools dot-a systemd tmpfiles
+inherit autotools dot-a systemd tmpfiles git-r3
 
 DESCRIPTION="Distributed compiler with a central scheduler to share build load"
 HOMEPAGE="https://github.com/icecc/icecream"
