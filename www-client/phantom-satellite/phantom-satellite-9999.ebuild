@@ -1,7 +1,7 @@
 EAPI=8
 REQUIRED_BUILDSPACE='16G'
 # Check https://developer.palemoon.org/build/linux/ for supported versions
-GCC_SUPPORTED_VERSIONS="7.5 8.5 9.3 9.4 10.3 11.3 12.2 12.3 13.2 13.3 14.1 14.2"
+GCC_SUPPORTED_VERSIONS="7.5 8.5 9.3 9.4 10.3 11.3 12.2 12.3 13.2 13.3 14.1 14.2 14.3"
 
 inherit phantom-satellite git-r3 flag-o-matic pax-utils xdg
 
