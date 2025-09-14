@@ -51,9 +51,8 @@ src_configure() {
 		# USE and be packaged rather than use the bundled copy (if use
 		# bundled, note need to setup python-any-r1)
 		-DQT_FEATURE_quick3dxr_openxr=OFF
-		-DQT_FEATURE_quick3d_assimp=OFF
-		-DTEST_quick3d_assimp=OFF
-		-Dsystem_assimp=OFF
+		-DQT_FEATURE_quick3d_assimp=ON
+		-DTEST_quick3d_assimp=ON
 	)
 
 	qt6-build_src_configure
