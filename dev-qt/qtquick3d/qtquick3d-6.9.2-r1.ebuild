@@ -17,13 +17,13 @@ fi
 IUSE="opengl vulkan"
 
 RDEPEND="
+	sys-libs/minizip-ng
 	~dev-qt/qtbase-${PV}:6[concurrent,gui,opengl=,vulkan=,widgets]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtquicktimeline-${PV}:6
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
 	sys-libs/zlib:=
-	sys-libs/minizip-ng:=
 "
 DEPEND="
 	${RDEPEND}
