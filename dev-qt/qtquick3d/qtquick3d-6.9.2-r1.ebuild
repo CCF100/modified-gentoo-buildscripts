@@ -53,6 +53,7 @@ src_configure() {
 		-DQT_FEATURE_quick3dxr_openxr=OFF
 		-DQT_FEATURE_quick3d_assimp=OFF
 		-DTEST_quick3d_assimp=OFF
+		-Dsystem_assimp=OFF
 	)
 
 	qt6-build_src_configure
