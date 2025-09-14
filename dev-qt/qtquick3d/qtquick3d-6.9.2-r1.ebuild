@@ -23,6 +23,7 @@ RDEPEND="
 	~dev-qt/qtshadertools-${PV}:6
 	media-libs/assimp:=
 	sys-libs/zlib:=
+	sys-libs/minizip-ng:=
 "
 DEPEND="
 	${RDEPEND}
