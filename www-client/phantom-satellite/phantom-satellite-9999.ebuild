@@ -204,8 +204,8 @@ src_install() {
 	einfo "Installing the package..."
 	local dest_libdir="/usr/$(get_libdir)"
 	mkdir -p "${D}/${dest_libdir}"
-	cp -rL "${PN}" "${D}/${dest_libdir}" || die
-	dosym "${dest_libdir}/${PN}/${PN}" "/usr/bin/${PN}"
+	cp -rL "phantomsatellite" "${D}/${dest_libdir}" || die
+	dosym "${dest_libdir}/phantomsatellite/phantomsatellite" "/usr/bin/${PN}"
 	einfo "Done installing the package."
 
 	# Until JIT-less builds are supported,
