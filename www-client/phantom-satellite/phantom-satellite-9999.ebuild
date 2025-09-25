@@ -210,7 +210,7 @@ src_install() {
 
 	# Until JIT-less builds are supported,
 	# also disable MPROTECT on the main executable:
-	pax-mark m "${D}/${dest_libdir}/${PN}/"{phantomsattelite,phantomsattelite-bin,plugin-container}
+	pax-mark m "${D}/${dest_libdir}/phantomsatellite/"{phantom-satelite,phantomsatelite-bin,plugin-container}
 
 	# Install icons and .desktop for menu entry:
 	install_branding_files
