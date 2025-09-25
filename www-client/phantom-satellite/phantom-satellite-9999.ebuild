@@ -30,7 +30,6 @@ IUSE="
 "
 
 EGIT_REPO_URI="https://github.com/DCFUKSURMOM/Phantom-Satellite.git"
-EGIT_COMMIT="${PV}_Release"
 
 DEPEND="
 	dev-lang/python:2.7
