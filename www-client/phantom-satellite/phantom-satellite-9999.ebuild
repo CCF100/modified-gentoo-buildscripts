@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
 IUSE="
 	+official-branding
-	+optimize
+	optimize
 	cpu_flags_x86_avx
 	cpu_flags_x86_sse
 	cpu_flags_x86_sse2
