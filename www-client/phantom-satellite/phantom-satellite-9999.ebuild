@@ -90,6 +90,12 @@ src_configure() {
 	RANLIB=gcc-ranlib
 	einfo ${CC}
 	einfo ${CXX}
+	tc-export CC CXX LD AR AS NM OBJDUMP RANLIB READELF PKG_CONFIG
+
+	# Pass the correct toolchain paths through cbindgen
+	if tc-is-cross-compiler ; then
+		export BINDGEN_CFLAGS="${SYSROOT:+--sysroot=${ESYSROOT}} --target=${CHOST} ${BINDGEN_CFLAGS-}"
+	fi
 
 	# Basic configuration:
 	mozconfig_init
@@ -160,6 +166,11 @@ src_configure() {
 		mozconfig_enable av1
 	fi
 
+	mozconfig_add_options_ac 'Gentoo default' \
+		--host="${CBUILD:-${CHOST}}" \
+		--target="${CHOST}" \
+		--with-toolchain-prefix="${CHOST}-"
+
 	# Enabling this causes xpcshell to hang during the packaging process,
 	# so disabling it until the cause can be tracked down. It most likely
 	# has something to do with the sandbox since the issue goes away when
@@ -168,7 +179,7 @@ src_configure() {
 
 	# Mainly to prevent system's NSS/NSPR from taking precedence over
 	# the built-in ones:
-	append-ldflags -Wl,-rpath="${EPREFIX}/usr/$(get_libdir)/palemoon"
+	append-ldflags -Wl,-rpath="${EPREFIX}/usr/$(get_libdir)/phantomsatelite"
 
 	export MOZBUILD_STATE_PATH="${WORKDIR}/mach_state"
 	mozconfig_var PYTHON $(which python2)
