@@ -430,6 +430,7 @@ multilib_src_configure() {
 		--pkg-config="$(tc-getPKG_CONFIG)"
 		--ranlib="$(tc-getRANLIB)"
 		--disable-stripping
+		--cpu=espresso
 
 		# overrides users' -g/-O, let *FLAGS handle these
 		--disable-debug
