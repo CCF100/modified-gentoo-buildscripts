@@ -81,6 +81,16 @@ src_prepare() {
 }
 
 src_configure() {
+
+	einfo "Enforcing the use of the correct gcc..."
+	AR=gcc-ar
+	CC=${CHOST}-gcc
+	CXX=${CHOST}-g++
+	NM=gcc-nm
+	RANLIB=gcc-ranlib
+	einfo ${CC}
+	einfo ${CXX}
+
 	# Basic configuration:
 	mozconfig_init
 
