@@ -100,6 +100,11 @@ src_configure() {
 	# Basic configuration:
 	mozconfig_init
 
+	mozconfig_set host "${CBUILD:-${CHOST}}"
+	mozconfig_set target "${CHOST}"
+	mozconfig-set with-toolchain-prefix "${CHOST}-"
+
+
 	mozconfig_disable updater install-strip accessibility gconf gold
 
 	if use official-branding; then
@@ -165,11 +170,6 @@ src_configure() {
 	if use av1; then
 		mozconfig_enable av1
 	fi
-
-	mozconfig_add_options_ac 'Gentoo default' \
-		--host="${CBUILD:-${CHOST}}" \
-		--target="${CHOST}" \
-		--with-toolchain-prefix="${CHOST}-"
 
 	# Enabling this causes xpcshell to hang during the packaging process,
 	# so disabling it until the cause can be tracked down. It most likely
