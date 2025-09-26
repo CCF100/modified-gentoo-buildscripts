@@ -116,9 +116,7 @@ mozconfig_disable() {
 }
 
 mozconfig_set() {
-	for option in "$@"; do
-		echo "ac_add_options ${option}" >> "${S}/.mozconfig"
-	done
+	echo "ac_add_options --$1=$2" >> "${S}/.mozconfig"
 }
 
 mozconfig_with() {
