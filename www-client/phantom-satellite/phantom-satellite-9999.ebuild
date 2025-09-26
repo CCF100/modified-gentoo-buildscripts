@@ -191,6 +191,7 @@ src_configure() {
 
 	# Disable mach notifications, which also cause sandbox access violations:
 	export MOZ_NOSPAM=1
+	cat ${S}/.mozconfig
 }
 
 src_compile() {
