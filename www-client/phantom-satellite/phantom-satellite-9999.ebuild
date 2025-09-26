@@ -153,6 +153,7 @@ src_configure() {
 
 	if use gtk3; then
 		mozconfig_enable default-toolkit=\"cairo-gtk3\"
+		mozconfig_disable npapi
 	fi
 
 	if ! use necko-wifi; then
