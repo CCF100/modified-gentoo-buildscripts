@@ -16,17 +16,16 @@ KEYWORDS="~amd64 ~x86 ~ppc"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
+RDEPEND="${DEPEND} dev-libs/hidapi media-libs/libsamplerate media-libs/speexdsp sys-libs/zlib[minizip] media-libs/libsdl3 media-libs/freetype =dev-qt/qtbase-6* dev-qt/qtsvg dev-qt/qtwebsockets"
+BDEPEND="dev-vcs/git dev-lang/nasm dev-util/cmake dev-util/vulkan-headers"
 
 src_configure() {
+        #mkdir ${S}/build
         local mycmakeargs=(
                 -S .
-                -B ${S}
                 -DCMAKE_BUILD_TYPE="Release"
                 -DPORTABLE_INSTALL="OFF"
                 -DCMAKE_INSTALL_PREFIX="${D}/usr"
-                -G "Ninja"
         )
         # export src_dir="$(pwd)"
         # export build_dir="$(pwd)/build"
@@ -35,12 +34,4 @@ src_configure() {
         # cmake --build "$build_dir"
         # cmake --install "$build_dir" --prefix="/usr"
         cmake_src_configure
-}
-
-src_compile() {
-        cmake_build
-}
-
-src_install() {
-        cmake_src_install
 }
