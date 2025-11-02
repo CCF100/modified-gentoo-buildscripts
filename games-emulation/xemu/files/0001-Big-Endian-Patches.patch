@@ -1,0 +1,49 @@
+From daf5a608cc2f3fb8370cc390b5a4dfeefe5e6dd5 Mon Sep 17 00:00:00 2001
+From: Chloe Christine Fontenot <foley2431@gmail.com>
+Date: Sun, 2 Nov 2025 12:13:12 -0600
+Subject: [PATCH] Big Endian Patches
+
+---
+ include/qemu/int128.h | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/include/qemu/int128.h b/include/qemu/int128.h
+index 174bd7dafb..2ecee60e50 100644
+--- a/include/qemu/int128.h
++++ b/include/qemu/int128.h
+@@ -247,17 +247,29 @@ struct Int128 {
+ 
+ static inline Int128 int128_make64(uint64_t a)
+ {
+-    return (Int128) { .lo = a, .hi = 0 };
++    #if HOST_BIG_ENDIAN
++        return (Int128) {  .hi = 0, .lo = a, };
++    #else
++        return (Int128) { .lo = a, .hi = 0 };
++    #endif
+ }
+ 
+ static inline Int128 int128_makes64(int64_t a)
+ {
+-    return (Int128) { .lo = a, .hi = a >> 63 };
++    #if HOST_BIG_ENDIAN
++        return (Int128) { .hi = a >> 63, .lo = a };
++    #else
++        return (Int128) { .lo = a, .hi = a >> 63 };
++    #endif
+ }
+ 
+ static inline Int128 int128_make128(uint64_t lo, uint64_t hi)
+ {
+-    return (Int128) { .lo = lo, .hi = hi };
++    #if HOST_BIG_ENDIAN
++        return (Int128) { .hi = hi, .lo = lo };
++    #else
++        return (Int128) { .lo = lo, .hi = hi };
++    #endif
+ }
+ 
+ static inline uint64_t int128_get64(Int128 a)
+-- 
+2.51.2
+

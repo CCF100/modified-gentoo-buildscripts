@@ -5,7 +5,7 @@ HOMEPAGE="https://xemu.app/"
 EGIT_REPO_URI="https://github.com/xemu-project/xemu.git"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND=""
@@ -16,12 +16,6 @@ DEPEND="${RDEPEND}
 	dev-util/glslang
 	x11-themes/hicolor-icon-theme
 	media-libs/libsdl2
-"
-
-BDEPEND="virtual/pkgconfig
-	dev-build/cmake
-	net-misc/curl
-	dev-vcs/git
 	dev-libs/glib
 	media-libs/glu
 	gui-libs/gtk
@@ -29,7 +23,6 @@ BDEPEND="virtual/pkgconfig
 	net-libs/libpcap
 	media-libs/libsamplerate
 	net-libs/libslirp
-	dev-build/meson
 	dev-cpp/nlohmann_json
 	dev-python/distlib
 	dev-python/pyyaml
@@ -38,7 +31,18 @@ BDEPEND="virtual/pkgconfig
 	media-libs/vulkan-loader
 	dev-libs/xxhash
 	sys-libs/zlib
+"
+
+BDEPEND="virtual/pkgconfig
+	dev-build/cmake
+	net-misc/curl
+	dev-vcs/git
+	dev-build/meson
 	"
+src_prepare() {
+	eapply "${FILESDIR}/0001-Big-Endian-Patches.patch"
+}
+
 
 src_configure() {
 	# --disable-download
