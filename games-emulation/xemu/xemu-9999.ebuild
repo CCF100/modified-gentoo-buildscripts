@@ -40,6 +40,7 @@ BDEPEND="virtual/pkgconfig
 	dev-build/meson
 	"
 src_prepare() {
+	default
 	eapply "${FILESDIR}/0001-Big-Endian-Patches.patch"
 }
 
