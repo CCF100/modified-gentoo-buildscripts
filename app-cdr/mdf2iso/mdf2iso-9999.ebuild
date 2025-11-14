@@ -2,8 +2,8 @@ EAPI=8
 inherit autotools git-r3
 DESCRIPTION="Converts Alcohol 120% .mdf files to .iso files"
 HOMEPAGE="https://salsa.debian.org/debian/mdf2iso"
-EGIT_SRC_URI="https://salsa.debian.org/debian/mdf2iso.git"
-LICENSE="GPL"
+EGIT_REPO_URI="https://salsa.debian.org/debian/mdf2iso.git"
+LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
