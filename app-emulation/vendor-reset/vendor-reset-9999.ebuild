@@ -4,7 +4,7 @@
 EAPI=8
 
 inherit dkms git-r3
-EGIT_REPO_URI="https://github.com/CCF100/vendor-reset.git"
+EGIT_REPO_URI="https://github.com/lowell80/vendor-reset.git"
 EGIT_BRANCH="master"
 
 
