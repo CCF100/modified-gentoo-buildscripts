@@ -31,12 +31,3 @@ src_install() {
 	insinto /etc/modules-load.d/
 	newins "${FILESDIR}"/modload.conf vendor-reset.conf
 }
-
-
-pkg_postinst() {
-        udev_reload
-}
-
-pkg_postrm() {
-        udev_reload
-}
