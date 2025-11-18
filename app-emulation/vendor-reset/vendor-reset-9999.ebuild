@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dkms git-r3
+inherit dkms git-r3 udev
 EGIT_REPO_URI="https://github.com/lowell80/vendor-reset.git"
 EGIT_BRANCH="master"
 
@@ -13,6 +13,9 @@ HOMEPAGE="https://github.com/gnif/vendor-reset"
 
 LICENSE="GPL-2"
 SLOT="0"
+
+RDEPEND="virtual/udev"
+DEPEND="${RDEPEND}"
 
 CONFIG_CHECK="FTRACE KPROBES PCI_QUIRKS KALLSYMS FUNCTION_TRACER"
 
@@ -24,7 +27,16 @@ src_compile() {
 
 src_install() {
 	dkms_src_install
-
+	udev_newrules udev/99-vendor-reset.rules 99-vendor-reset.rules
 	insinto /etc/modules-load.d/
 	newins "${FILESDIR}"/modload.conf vendor-reset.conf
+}
+
+
+pkg_postinst() {
+        udev_reload
+}
+
+pkg_postrm() {
+        udev_reload
 }
