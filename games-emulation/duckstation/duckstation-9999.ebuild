@@ -26,7 +26,7 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	media-libs/libpng[apng]
+	media-libs/libpng
 	llvm-core/clang
 	dev-libs/libbacktrace
 	media-libs/libwebp
