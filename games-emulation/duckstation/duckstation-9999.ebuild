@@ -284,8 +284,10 @@ src_install() {
 	doins "${BUILD_DIR}"/bin/duckstation-qt
 	fperms +x /opt/${PN}/duckstation-qt
 	insinto /opt/duckstation/libs/
-	doins ${WORKDIR}/duckstation/deps/usr/lib64/libsoundtouch.so.2.3.3
-	dosym -r /opt/duckstation/libs/libsoundtouch.2.3.3 /opt/duckstation/libs/libsoundtouch.so.2
+	#doins ${WORKDIR}/duckstation/deps/usr/lib64/libsoundtouch.so.2.3.3
+	#dosym -r /opt/duckstation/libs/libsoundtouch.2.3.3 /opt/duckstation/libs/libsoundtouch.so.2
+	doins -r ${WORKDIR}/duckstation/deps/usr/lib64/*
 	insinto /usr/bin
 	doins ${FILESDIR}/duckstation
+	fperms +x /usr/bin/duckstation
 }

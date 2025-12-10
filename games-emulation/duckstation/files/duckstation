@@ -1,2 +1,2 @@
 #!/bin/bash
-LD_LIBRARY_PATH=/opt/duckstation/libs/ /opt/duckstation/duckstation-qt
+QT_QPA_PLATFORM=xcb LD_LIBRARY_PATH=/opt/duckstation/libs/ /opt/duckstation/duckstation-qt
