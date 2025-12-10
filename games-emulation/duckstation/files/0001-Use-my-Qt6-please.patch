@@ -1,0 +1,28 @@
+From 04b780a95242a7775f0a38ff374e382a3f256b27 Mon Sep 17 00:00:00 2001
+From: Chloe Christine Fontenot <foley2431@gmail.com>
+Date: Tue, 9 Dec 2025 19:27:40 -0600
+Subject: [PATCH] Use my Qt6 please
+
+---
+ CMakeModules/DuckStationDependencies.cmake | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/CMakeModules/DuckStationDependencies.cmake b/CMakeModules/DuckStationDependencies.cmake
+index 0d2419c8c..7524c13bc 100644
+--- a/CMakeModules/DuckStationDependencies.cmake
++++ b/CMakeModules/DuckStationDependencies.cmake
+@@ -70,11 +70,6 @@ if(BUILD_QT_FRONTEND)
+   set(QT_NO_PRIVATE_MODULE_WARNING ON)
+ 
+   find_package(Qt6 6.10.1 COMPONENTS Core Gui GuiPrivate Widgets LinguistTools REQUIRED)
+-
+-  # Have to verify it down here, don't want users using unpatched Qt.
+-  if(NOT Qt6_DIR MATCHES "^${CMAKE_PREFIX_PATH}")
+-    message(FATAL_ERROR "Using incorrect Qt library. Check your dependencies.")
+-  endif()
+ endif()
+ 
+ # Libraries that are pulled in from host.
+-- 
+2.52.0
+
