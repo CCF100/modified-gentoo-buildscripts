@@ -17,20 +17,20 @@ EAPI=8
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
 # without the following line:
-inherit cargo git-r3
+inherit autotools git-r3
 #
 # Eclasses tend to list descriptions of how to use their functions properly.
 # Take a look at the eclass/ directory for more examples.
 
 # Short one-line description of this package.
-DESCRIPTION="This is a sample skeleton ebuild file"
+DESCRIPTION="Multiplatform USB DFU host utility"
 
 # Homepage, not used by Portage directly but handy for developer reference
-HOMEPAGE="https://foo.example.org/"
+HOMEPAGE="https://dfu-util.sourceforge.net/"
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
-EGIT_REPO_URI="https://github.com/Spagett1/pineflash.git"
+EGIT_REPO_URI="https://git.code.sf.net/p/dfu-util/dfu-util"
 
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
@@ -42,7 +42,7 @@ EGIT_REPO_URI="https://github.com/Spagett1/pineflash.git"
 # License of the package.  This must match the name of file(s) in the
 # licenses/ directory.  For complex license combination see the developer
 # docs on gentoo.org for details.
-LICENSE=""
+LICENSE="GPL-2"
 
 # The SLOT variable is used to tell Portage if it's OK to keep multiple
 # versions of the same package installed at the same time.  For example,
@@ -73,7 +73,7 @@ SLOT="0"
 # exists for.  If the package was for an x86 binary package, then
 # KEYWORDS would be set like this: KEYWORDS="-* x86"
 # Do not use KEYWORDS="*"; this is not valid in an ebuild context.
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 # Comprehensive list of any and all USE flags leveraged in the ebuild,
 # with some exceptions, e.g., ARCH specific flags like "amd64" or "ppc".
@@ -102,20 +102,16 @@ IUSE=""
 
 # Build-time dependencies that are executed during the emerge process, and
 # only need to be present in the native build system (CBUILD). Example:
-BDEPEND="app-util/blisp app-util/dfu-util"
-
-src_unpack() {
-    git-r3_src_unpack
-    cargo_live_src_unpack
-}
+#BDEPEND="virtual/pkgconfig"
 
 
 # The following src_configure function is implemented as default by portage, so
 # you only need to call it if you need a different behaviour.
-#src_configure() {
+src_configure() {
 	# Most open-source packages use GNU autoconf for configuration.
 	# The default, quickest (and preferred) way of running configure is:
-	#econf
+	./autogen.sh
+	#eautoconf
 	#
 	# You could use something similar to the following lines to
 	# configure your package before compilation.  The "|| die" portion
@@ -123,19 +119,19 @@ src_unpack() {
 	# You should use this at the end of critical commands in the build
 	# process.  (Hint: Most commands are critical, that is, the build
 	# process should abort if they aren't successful.)
-	#./configure \
-	#	--host=${CHOST} \
-	#	--prefix=/usr \
-	#	--infodir=/usr/share/info \
-	#	--mandir=/usr/share/man || die
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
 	#   https://wiki.linuxfoundation.org/lsb/fhs
-#}
+}
 
 # The following src_compile function is implemented as default by portage, so
 # you only need to call it, if you need different behaviour.
-#src_compile() {
+src_compile() {
 	# emake is a script that calls the standard GNU make with parallel
 	# building options for speedier builds (especially on SMP systems).
 	# Try emake first.  It might not work for some packages, because
@@ -144,17 +140,17 @@ src_unpack() {
 	# visual clue to others that the makefiles have bugs that have been
 	# worked around.
 
-	#emake
-#}
+	emake
+}
 
 # The following src_install function is implemented as default by portage, so
 # you only need to call it, if you need different behaviour.
-#src_install() {
+src_install() {
 	# You must *personally verify* that this trick doesn't install
 	# anything outside of DESTDIR; do this by reading and
 	# understanding the install part of the Makefiles.
 	# This is the preferred way to install.
-	#emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	# When you hit a failure with emake, do not just use make. It is
 	# better to fix the Makefiles to allow proper parallelization.
@@ -173,4 +169,4 @@ src_unpack() {
 	#	install
 	# Again, verify the Makefiles!  We don't want anything falling
 	# outside of ${D}.
-#}
+}
