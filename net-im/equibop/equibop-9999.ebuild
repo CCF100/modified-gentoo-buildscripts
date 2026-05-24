@@ -5,7 +5,7 @@ inherit desktop git-r3
 DESCRIPTION="Equibop is a fork of Vesktop."
 HOMEPAGE="https://github.com/Equicord/Equibop"
 EGIT_REPO_URI="https://github.com/Equicord/Equibop.git"
-EGIT_COMMIT="v${PV}"
+#EGIT_COMMIT="v${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
