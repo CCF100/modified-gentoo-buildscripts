@@ -94,7 +94,7 @@ IUSE=""
 # other users hopefully won't be caught without the right version of
 # a dependency.
 RDEPEND="
-	dev-util/crash
+	kde-frameworks/kcrash
 	kde-frameworks/kcoreaddons
 	kde-frameworks/kwidgetsaddons
 	kde-frameworks/kconfig
