@@ -102,7 +102,7 @@ IUSE=""
 
 # Build-time dependencies that are executed during the emerge process, and
 # only need to be present in the native build system (CBUILD). Example:
-BDEPEND="app-util/blisp app-util/dfu-util"
+#BDEPEND="app-util/blisp app-util/dfu-util"
 
 src_unpack() {
     git-r3_src_unpack
