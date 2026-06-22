@@ -17,20 +17,20 @@ EAPI=8
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
 # without the following line:
-inherit cargo git-r3
+inherit autotools git-r3
 #
 # Eclasses tend to list descriptions of how to use their functions properly.
 # Take a look at the eclass/ directory for more examples.
 
 # Short one-line description of this package.
-DESCRIPTION="TLS-encrypted server-client KVM software for sharing input devices and clipboards across Linux machines."
+DESCRIPTION="Qualcomm Remote Filesystem Service Implementation"
 
 # Homepage, not used by Portage directly but handy for developer reference
-HOMEPAGE="https://git.sr.ht/~nickbp/nikau"
+HOMEPAGE="https://github.com/linux-msm/rmtfs"
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
-EGIT_REPO_URI="https://git.sr.ht/~nickbp/nikau"
+EGIT_REPO_URI="${HOMEPAGE}.git"
 
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
@@ -42,7 +42,7 @@ EGIT_REPO_URI="https://git.sr.ht/~nickbp/nikau"
 # License of the package.  This must match the name of file(s) in the
 # licenses/ directory.  For complex license combination see the developer
 # docs on gentoo.org for details.
-LICENSE="AGPL-3"
+LICENSE="All-Rights-Reserved"
 
 # The SLOT variable is used to tell Portage if it's OK to keep multiple
 # versions of the same package installed at the same time.  For example,
@@ -78,7 +78,8 @@ KEYWORDS=""
 # Comprehensive list of any and all USE flags leveraged in the ebuild,
 # with some exceptions, e.g., ARCH specific flags like "amd64" or "ppc".
 # Not needed if the ebuild doesn't use any USE flags.
-IUSE=""
+IUSE="openrc systemd"
+REQUIRED_USE="|| ( openrc systemd )"
 
 # A space delimited list of portage features to restrict. man 5 ebuild
 # for details.  Usually not needed.
@@ -93,22 +94,24 @@ IUSE=""
 # had installed on your system when you tested the package.  Then
 # other users hopefully won't be caught without the right version of
 # a dependency.
-#RDEPEND=""
+RDEPEND=""
 
 # Build-time dependencies that need to be binary compatible with the system
 # being built (CHOST). These include libraries that we link against.
 # The below is valid if the same run-time depends are required to compile.
-#DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	net-libs/qrtr
+	virtual/udev
+       "
 
 # Build-time dependencies that are executed during the emerge process, and
 # only need to be present in the native build system (CBUILD). Example:
-#BDEPEND="app-util/blisp app-util/dfu-util"
+#BDEPEND="virtual/pkgconfig"
 
-src_unpack() {
-    git-r3_src_unpack
-    cargo_live_src_unpack
-}
-
+#PATCHES=(
+#	"${FILESDIR}/0001-add-modem_tng-alias-for-tunning-partition.patch"
+#)
 
 # The following src_configure function is implemented as default by portage, so
 # you only need to call it if you need a different behaviour.
@@ -135,7 +138,7 @@ src_unpack() {
 
 # The following src_compile function is implemented as default by portage, so
 # you only need to call it, if you need different behaviour.
-#src_compile() {
+src_compile() {
 	# emake is a script that calls the standard GNU make with parallel
 	# building options for speedier builds (especially on SMP systems).
 	# Try emake first.  It might not work for some packages, because
@@ -144,8 +147,8 @@ src_unpack() {
 	# visual clue to others that the makefiles have bugs that have been
 	# worked around.
 
-	#emake
-#}
+	emake rmtfs
+}
 
 # The following src_install function is implemented as default by portage, so
 # you only need to call it, if you need different behaviour.

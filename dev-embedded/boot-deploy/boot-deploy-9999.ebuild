@@ -17,20 +17,20 @@ EAPI=8
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
 # without the following line:
-inherit cargo git-r3
+inherit git-r3
 #
 # Eclasses tend to list descriptions of how to use their functions properly.
 # Take a look at the eclass/ directory for more examples.
 
 # Short one-line description of this package.
-DESCRIPTION="TLS-encrypted server-client KVM software for sharing input devices and clipboards across Linux machines."
+DESCRIPTION="tool from postmarketOS for finalizing and deploying boot related files"
 
 # Homepage, not used by Portage directly but handy for developer reference
-HOMEPAGE="https://git.sr.ht/~nickbp/nikau"
+HOMEPAGE="https://gitlab.postmarketos.org/postmarketOS/boot-deploy"
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
-EGIT_REPO_URI="https://git.sr.ht/~nickbp/nikau"
+EGIT_REPO_URI="${HOMEPAGE}.git"
 
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
@@ -42,7 +42,7 @@ EGIT_REPO_URI="https://git.sr.ht/~nickbp/nikau"
 # License of the package.  This must match the name of file(s) in the
 # licenses/ directory.  For complex license combination see the developer
 # docs on gentoo.org for details.
-LICENSE="AGPL-3"
+LICENSE="GPL-3"
 
 # The SLOT variable is used to tell Portage if it's OK to keep multiple
 # versions of the same package installed at the same time.  For example,
@@ -102,12 +102,7 @@ IUSE=""
 
 # Build-time dependencies that are executed during the emerge process, and
 # only need to be present in the native build system (CBUILD). Example:
-#BDEPEND="app-util/blisp app-util/dfu-util"
-
-src_unpack() {
-    git-r3_src_unpack
-    cargo_live_src_unpack
-}
+#BDEPEND="virtual/pkgconfig"
 
 
 # The following src_configure function is implemented as default by portage, so
@@ -149,7 +144,14 @@ src_unpack() {
 
 # The following src_install function is implemented as default by portage, so
 # you only need to call it, if you need different behaviour.
-#src_install() {
+src_install() {
+	
+	dosbin boot-deploy
+	insinto /usr/share/boot-deploy/
+	insopts -m755
+	doins boot-deploy-functions.sh
+	insopts -m644
+	doins ${FILESDIR}/os-customization
 	# You must *personally verify* that this trick doesn't install
 	# anything outside of DESTDIR; do this by reading and
 	# understanding the install part of the Makefiles.
@@ -173,4 +175,4 @@ src_unpack() {
 	#	install
 	# Again, verify the Makefiles!  We don't want anything falling
 	# outside of ${D}.
-#}
+}
