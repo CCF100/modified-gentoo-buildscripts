@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig dev-build/make media-gfx/imagemagick openbios? ( app-containers/docker ) >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=The PCSX-Redux project is a collection of tools, research, hardware design, and libraries aiming at development and reverse engineering on the PlayStation 1. The core product itself, PCSX-Redux, is yet another fork of the Playstation emulator, PCSX.
+EAPI=8
+HOMEPAGE=The PCSX-Redux project is a collection of tools, research, hardware design, and libraries aiming at development and reverse engineering on the PlayStation 1. The core product itself, PCSX-Redux, is yet another fork of the Playstation emulator, PCSX.
+INHERIT=git-r3
+IUSE=+openbios
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=dev-libs/libfmt media-libs/glfw dev-libs/libuv media-libs/freetype media-libs/sdl2-net sys-libs/zlib dev-libs/capstone net-misc/curl
+SLOT=0
+_eclasses_=git-r3	2f8cdb10b033f92c3136aa6488a31c98
+_md5_=1f1b3dc26ea6af49f592620744461bc4

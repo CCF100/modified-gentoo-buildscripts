@@ -1,0 +1,12 @@
+BDEPEND=app-alternatives/ninja >=dev-build/cmake-3.28.5 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare test unpack
+DESCRIPTION=Your handy, infinite brainstorming tool!
+EAPI=8
+HOMEPAGE=https://apps.kde.org/drawy/
+INHERIT=cmake git-r3
+LICENSE=|| ( GPL-3+ GPL-2+ LGPL-2+ MIT OFL-1.1 CC-BY-SA-4.0 CC0-1.0 BSD-2 )
+PROPERTIES=live
+RDEPEND=kde-frameworks/kcrash kde-frameworks/kcoreaddons kde-frameworks/kwidgetsaddons kde-frameworks/kconfig kde-frameworks/kconfigwidgets kde-frameworks/kxmlgui kde-frameworks/kiconthemes kde-frameworks/ki18n kde-frameworks/syntax-highlighting
+SLOT=0
+_eclasses_=toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	flag-o-matic	fd3558f73f6503093adee69adf41020d	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	ninja-utils	d063ea1900a793f93eb095010d6d9156	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	c54f532543a549f7318d6c49aaf8e953	git-r3	2f8cdb10b033f92c3136aa6488a31c98
+_md5_=b8bdbdba900b45d7c2dd30478f1639e4

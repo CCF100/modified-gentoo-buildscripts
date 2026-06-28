@@ -1,0 +1,14 @@
+BDEPEND=virtual/libusb dev-cpp/cli11 >=dev-vcs/git-1.8.2.1[curl] >=dev-build/meson-1.2.3 app-alternatives/ninja dev-build/meson-format-array
+DEFINED_PHASES=compile configure install test unpack
+DEPEND=gui-libs/gtk gui-libs/libadwaita dev-libs/openssl media-libs/libjxl gui-libs/vte dev-vcs/git dev-util/desktop-file-utils sys-devel/gettext sys-apps/file media-libs/openxr-loader net-misc/curl dev-build/meson dev-build/ninja
+DESCRIPTION=Orchestrator for the free XR stack.
+EAPI=8
+HOMEPAGE=https://lvra.gitlab.io/docs/fossvr/envision/
+INHERIT=git-r3 meson
+KEYWORDS=~amd64
+LICENSE=AGPL-3
+PROPERTIES=live
+RDEPEND=gui-libs/gtk gui-libs/libadwaita dev-libs/openssl media-libs/libjxl gui-libs/vte dev-vcs/git dev-util/desktop-file-utils sys-devel/gettext sys-apps/file media-libs/openxr-loader net-misc/curl
+SLOT=0
+_eclasses_=git-r3	2f8cdb10b033f92c3136aa6488a31c98	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	flag-o-matic	fd3558f73f6503093adee69adf41020d	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	ninja-utils	d063ea1900a793f93eb095010d6d9156	eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	python-utils-r1	18a01bee4e486884d7457cfacde74099	sysroot	4c36abaf94ebd3ab32f8abea9a444121	rust-toolchain	76468983281b0a7fc167ca224f84ecfd	meson	12065b402c6d78a2aec926ed8dfd964f
+_md5_=27446242cc6c06ea479595fc39b4920c
